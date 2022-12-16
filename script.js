@@ -16,29 +16,32 @@ var mode_root_position = ['6弦ルート:低', '6弦ルート:中', '6弦ルー�
 document.addEventListener('keydown', keydown_event);
 function keydown_event(e) {
     if (e.code == 'ArrowRight') {
-        let result;
+
+        let penta_result;
+        let mode_result;
+        
         for(let i=0; i<1; i++) {
             // penta
             var scale_size = pentatonic_scale.length;
             var random_scale_num = Math.floor(Math.random() * scale_size);
             var position_size = pentatonic_root_position.length;
             var random_position_num = Math.floor(Math.random() * position_size);
-            result = pentatonic_scale[random_scale_num] + ": " + pentatonic_root_position[random_position_num];
+            penta_result = pentatonic_scale[random_scale_num] + ": " + pentatonic_root_position[random_position_num];
 
             // mode
             var scale_size = mode_scale.length;
             var random_scale_num = Math.floor(Math.random() * scale_size);
             var position_size = mode_root_position.length;
             var random_position_num = Math.floor(Math.random() * position_size);
-            result = mode_scale[random_scale_num] + ": " + mode_root_position[random_position_num];
+            mode_result = mode_scale[random_scale_num] + ": " + mode_root_position[random_position_num];
         }
         // penta
         root = key[Math.floor(Math.random() * 12)]
-        document.getElementById('penta').textContent = root + " " + result;
+        document.getElementById('penta').textContent = root + " " + penta_result;
 
         // mode
         root = key[Math.floor(Math.random() * 12)]
-        document.getElementById('mode').textContent = root + " " + result;
+        document.getElementById('mode').textContent = root + " " + mode_result;
     } else {
         return false;
     }
