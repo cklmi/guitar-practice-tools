@@ -1,47 +1,26 @@
-var key = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
-
-// Pentatonic scale
-var pentatonic_scale = ['Major Pentatonic', 'Minor Pentatonic'];
-var pentatonic_root_position = ['6弦ルート:低', '6弦ルート:高', '5弦ルート:低', '5弦ルート:高','4弦ルート:低', '4弦ルート:高', '3弦ルート:低', '3弦ルート:高', '2弦ルート:低', '2弦ルート:高'];
-
-// Mode scale
-var mode_scale = ['Ionian'];
-var mode_root_position = ['6弦ルート:低', '6弦ルート:中', '6弦ルート:高', '5弦ルート:低', '5弦ルート:中', '5弦ルート:高', '4弦ルート:低', '4弦ルート:中', '4弦ルート:高', '3弦ルート:低', '3弦ルート:中', '3弦ルート:高', '2弦ルート:低', '2弦ルート:中', '2弦ルート:高'];
+var keys = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+var root_position = ['6th string', '5th string', '4th string', '3rd string', '2nd string', '1st string',];
 
 // Interval
 
 // Chord tone
 
-// ---
+// Chord
+
 document.addEventListener('keydown', keydown_event);
+
 function keydown_event(e) {
     if (e.code == 'ArrowRight') {
-
-        let penta_result;
-        let mode_result;
+        let result;
         
         for(let i=0; i<1; i++) {
-            // penta
-            var scale_size = pentatonic_scale.length;
-            var random_scale_num = Math.floor(Math.random() * scale_size);
-            var position_size = pentatonic_root_position.length;
-            var random_position_num = Math.floor(Math.random() * position_size);
-            penta_result = pentatonic_scale[random_scale_num] + ": " + pentatonic_root_position[random_position_num];
-
-            // mode
-            var scale_size = mode_scale.length;
-            var random_scale_num = Math.floor(Math.random() * scale_size);
-            var position_size = mode_root_position.length;
-            var random_position_num = Math.floor(Math.random() * position_size);
-            mode_result = mode_scale[random_scale_num] + ": " + mode_root_position[random_position_num];
+            var root_position_size = root_position.length;
+            var random_root_position_num = Math.floor(Math.random() * root_position_size);
+            result = "Root: " + root_position[random_root_position_num];
         }
-        // penta
-        root = key[Math.floor(Math.random() * 12)]
-        document.getElementById('penta').textContent = root + " " + penta_result;
 
-        // mode
-        root = key[Math.floor(Math.random() * 12)]
-        document.getElementById('mode').textContent = root + " " + mode_result;
+        key = keys[Math.floor(Math.random() * 12)]
+        document.getElementById('scale').textContent = 'Key: ' + key + ' / ' + " " + result;
     } else {
         return false;
     }
